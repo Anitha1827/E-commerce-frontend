@@ -73,7 +73,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `${process.env.REACT_APP_API}/api/v1/product/update-product/${id}`,
+        `/api/v1/product/update-product/${id}`,
         productData
       );
       if (data?.success) {

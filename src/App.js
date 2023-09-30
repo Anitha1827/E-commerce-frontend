@@ -4,12 +4,11 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Policy from "./pages/Policy";
 import Pagenotfound from "./pages/Pagenotfound";
-import Register from "./pages/Auth/Register.js";
-import "react-toastify/dist/ReactToastify.css";
+import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./components/Routes/Private";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ForgotPasssword from "./pages/Auth/ForgotPassword";
 import AdminRoute from "./components/Routes/AdminRoute";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import CreateCategory from "./pages/Admin/CreateCategory";
@@ -25,7 +24,6 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/Admin/AdminOrders";
-
 function App() {
   return (
     <>
@@ -51,7 +49,7 @@ function App() {
           <Route path="admin/orders" element={<AdminOrders />} />
         </Route>
         <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/forgot-password" element={<ForgotPasssword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

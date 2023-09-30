@@ -1,27 +1,31 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout/Layout";
-import toast from "react-hot-toast";
+import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
 
-const ForgotPassword = () => {
+const ForgotPasssword = () => {
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [answer, setAnswer] = useState("");
 
   const navigate = useNavigate();
 
-  //   Form function
+  // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/auth/forgot-password`,
-        { email, newPassword, answer }
+        {
+          email,
+          newPassword,
+          answer,
+        }
       );
       if (res && res.data.success) {
-        toast.success(res.data.message);
+        toast.success(res.data && res.data.message);
 
         navigate("/login");
       } else {
@@ -29,47 +33,45 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something Went Wrong");
+      toast.error("Something went wrong");
     }
   };
-
   return (
-    <Layout title={"Forgot Password -Ecommerce App"}>
-      <div className="form-container">
-        <h1>Reset Password</h1>
+    <Layout title={"Forgot Password - Ecommerce APP"}>
+      <div className="form-container ">
         <form onSubmit={handleSubmit}>
+          <h4 className="title">RESET PASSWORD</h4>
+
           <div className="mb-3">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
-              id="exampleInputEmail"
-              placeholder="Enter your Email"
+              id="exampleInputEmail1"
+              placeholder="Enter Your Email "
               required
             />
           </div>
-
           <div className="mb-3">
             <input
               type="text"
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
-              id="exampleInputAnswer"
-              placeholder="Enter your favorite sports Name"
+              id="exampleInputEmail1"
+              placeholder="Enter Your favorite Sport Name "
               required
             />
           </div>
-
           <div className="mb-3">
             <input
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               className="form-control"
-              id="exampleInputNewPassword"
-              placeholder="Enter your Password"
+              id="exampleInputPassword1"
+              placeholder="Enter Your Password"
               required
             />
           </div>
@@ -83,4 +85,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ForgotPasssword;

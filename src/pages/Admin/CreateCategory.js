@@ -29,7 +29,7 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("somthing went wrong in input form");
+      // toast.error("somthing went wrong in input form");
     }
   };
 
@@ -39,8 +39,8 @@ const CreateCategory = () => {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API}/api/v1/category/get-category`
       );
-      if (data.success) {
-        setCategories(data.category);
+      if (data?.success) {
+        setCategories(data?.category);
       }
     } catch (error) {
       console.log(error);
@@ -60,7 +60,7 @@ const CreateCategory = () => {
         `${process.env.REACT_APP_API}/api/v1/category/update-category/${selected._id}`,
         { name: updatedName }
       );
-      if (data.success) {
+      if (data?.success) {
         toast.success(`${updatedName} is updated`);
         setSelected(null);
         setUpdatedName("");
@@ -70,7 +70,7 @@ const CreateCategory = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error("Somtihing went wrong");
+      console.log(error);
     }
   };
   //delete category
@@ -92,7 +92,7 @@ const CreateCategory = () => {
   };
   return (
     <Layout title={"Dashboard - Create Category"}>
-      <div className="container-fluid m-3 p-3">
+      <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
@@ -148,7 +148,7 @@ const CreateCategory = () => {
             <Modal
               onCancel={() => setVisible(false)}
               footer={null}
-              open={visible}
+              visible={visible}
             >
               <CategoryForm
                 value={updatedName}
